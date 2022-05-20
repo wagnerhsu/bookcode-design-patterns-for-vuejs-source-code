@@ -28,6 +28,11 @@ const routes = [
     name: 'antd',
     component: AndDesignUiView,
   },
+  {
+    path: '/provideinject',
+    name: 'provideinject',
+    component: () => import('../views/ProvideInjectView.vue'),
+  },
 ];
 
 const router = createRouter({
