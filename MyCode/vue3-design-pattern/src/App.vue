@@ -6,7 +6,8 @@
     <router-link to="/antd">Antd</router-link> |
     <router-link to="/provideinject">ProvideInject</router-link> |
     <router-link to="/datetime">DateTime</router-link> |
-    <router-link to="/formvalidation">FormValidation</router-link>
+    <router-link to="/formvalidation">FormValidation</router-link> |
+    <router-link to="/tictactoe">TicTacToe</router-link>
   </nav>
   <router-view />
 </template>

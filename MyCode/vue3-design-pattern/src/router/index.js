@@ -43,6 +43,11 @@ const routes = [
     name: 'formvalidation',
     component: () => import('../views/FormValidationView.vue'),
   },
+  {
+    path: '/tictactoe',
+    name: 'tictactoe',
+    component: () => import('../views/TicTacToeView.vue'),
+  },
 ];
 
 const router = createRouter({

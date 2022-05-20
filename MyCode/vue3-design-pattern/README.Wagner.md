@@ -3,6 +3,10 @@
 
 ## 2033-05-20
 
+### 0.1.5
+
+- Add TicTacToe
+
 ### 0.1.4
 
 - 添加FormValidation演示功能
