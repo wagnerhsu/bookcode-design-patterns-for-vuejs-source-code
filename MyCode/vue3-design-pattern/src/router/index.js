@@ -38,6 +38,11 @@ const routes = [
     name: 'datetime',
     component: () => import('../views/DateTimeView.vue'),
   },
+  {
+    path: '/formvalidation',
+    name: 'formvalidation',
+    component: () => import('../views/FormValidationView.vue'),
+  },
 ];
 
 const router = createRouter({

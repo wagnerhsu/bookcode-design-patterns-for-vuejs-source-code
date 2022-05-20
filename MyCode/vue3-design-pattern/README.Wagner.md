@@ -3,6 +3,10 @@
 
 ## 2033-05-20
 
+### 0.1.4
+
+- 添加FormValidation演示功能
+
 ### 0.1.3
 
 - 使用strategy模式的DateTime组件，支持luxon和moment
