@@ -33,6 +33,11 @@ const routes = [
     name: 'provideinject',
     component: () => import('../views/ProvideInjectView.vue'),
   },
+  {
+    path: '/datetime',
+    name: 'datetime',
+    component: () => import('../views/DateTimeView.vue'),
+  },
 ];
 
 const router = createRouter({

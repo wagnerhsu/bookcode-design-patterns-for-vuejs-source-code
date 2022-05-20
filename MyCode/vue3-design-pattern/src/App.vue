@@ -4,7 +4,8 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/props">Props</router-link> |
     <router-link to="/antd">Antd</router-link> |
-    <router-link to="/provideinject">ProvideInject</router-link>
+    <router-link to="/provideinject">ProvideInject</router-link> |
+    <router-link to="/datetime">DateTime</router-link>
   </nav>
   <router-view />
 </template>
