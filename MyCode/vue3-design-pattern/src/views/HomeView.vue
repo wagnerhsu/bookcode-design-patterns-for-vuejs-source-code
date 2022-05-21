@@ -1,18 +1,14 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h2>Home View</h2>
+    <p>{{ reversedGreeting }}</p>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-};
+<script setup>
+import { ref, computed } from 'vue';
+const greeting = ref('Hello, World');
+const reversedGreeting = computed(() => {
+  return greeting.value.split('').reverse().join('');
+});
 </script>

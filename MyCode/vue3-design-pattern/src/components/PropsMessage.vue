@@ -1,12 +1,39 @@
 <template>
-  <p>From PropsMessage: {{ variant }}</p>
-  <a>{{ `${authenticated ? 'Logout' : 'Login'}` }}</a>
-  <p>{{ detail }}</p>
+  <p>From PropsMessage: {{ props.variant }}</p>
+  <a>{{ `${props.authenticated ? 'Logout' : 'Login'}` }}</a>
+  <p>{{ props.detail }}</p>
   <a-input placeholder="input text here" v-model:value="v"></a-input>
   <a-button type="primary" @click="handleClick">Click</a-button>
 </template>
+
+<script setup>
+import { ref, defineProps, defineEmits } from 'vue';
+const props = defineProps({
+  variant: {
+    required: true,
+    validator: validateVariant,
+  },
+  authenticated: {
+    type: Boolean,
+    default: false,
+  },
+  detail: {
+    type: Object,
+    required: true,
+  },
+});
+const emits = defineEmits({
+  updateText: updateTextValidator,
+});
+const v = ref('initial value');
+const handleClick = ($event) => {
+  console.log($event);
+  console.log('Child', v.value);
+  emits('updateText', v.value);
+};
+</script>
+
 <script>
-import { ref } from 'vue';
 export function validateVariant(variant) {
   if (!['success', 'warning', 'error'].includes(variant)) {
     throw new Error(
@@ -25,37 +52,4 @@ export function updateTextValidator(data) {
   }
   return true;
 }
-export default {
-  name: 'PropsMessage',
-  emits: {
-    updateText: updateTextValidator,
-  },
-  props: {
-    variant: {
-      required: true,
-      validator: validateVariant,
-    },
-    authenticated: {
-      type: Boolean,
-      default: false,
-    },
-    detail: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props, { emit }) {
-    const v = ref('initial value');
-    const handleClick = ($event) => {
-      console.log($event);
-      console.log('Child', v.value);
-      emit('updateText', v.value);
-    };
-
-    return {
-      handleClick,
-      v,
-    };
-  },
-};
 </script>
