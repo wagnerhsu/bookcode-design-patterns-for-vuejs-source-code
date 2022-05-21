@@ -4,8 +4,7 @@
     <p>{{ userName }}</p>
   </div>
 </template>
-<script>
-export default {
-  inject: ['userName'],
-};
+<script setup>
+import { inject } from 'vue';
+const userName = inject('userName');
 </script>

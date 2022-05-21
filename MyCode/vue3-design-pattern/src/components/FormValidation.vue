@@ -38,43 +38,31 @@
   </div>
 </template>
 
-<script>
-import { reactive, computed } from 'vue';
+<script setup>
+import { reactive, computed, defineEmits } from 'vue';
 import { patientForm, isFormValid } from './form.js';
 
-export default {
-  emits: ['submit'],
-
-  setup(props, { emit }) {
-    const form = reactive({
-      name: '',
-      weight: {
-        value: '',
-        units: 'kg',
-      },
-    });
-
-    const validatedForm = computed(() => {
-      return patientForm(form);
-    });
-
-    const submit = () => {
-      emit('submit', { patient: form });
-    };
-
-    const valid = computed(() => {
-      const ret = isFormValid(validatedForm.value);
-      return ret;
-    });
-
-    return {
-      form,
-      validatedForm,
-      submit,
-      valid,
-    };
+const emits = defineEmits(['submit']);
+const form = reactive({
+  name: '',
+  weight: {
+    value: '',
+    units: 'kg',
   },
+});
+
+const validatedForm = computed(() => {
+  return patientForm(form);
+});
+
+const submit = () => {
+  emits('submit', { patient: form });
 };
+
+const valid = computed(() => {
+  const ret = isFormValid(validatedForm.value);
+  return ret;
+});
 </script>
 
 <style>

@@ -7,7 +7,8 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
+import { ref, defineProps, defineEmits, onBeforeMount } from 'vue';
+console.log('PropsMessage.Script.Setup');
 const props = defineProps({
   variant: {
     required: true,
@@ -31,9 +32,14 @@ const handleClick = ($event) => {
   console.log('Child', v.value);
   emits('updateText', v.value);
 };
+onBeforeMount(() => {
+  console.log('PropsMessage.Script.Setup.onBeforeMount');
+});
 </script>
 
 <script>
+import { onMounted } from 'vue';
+console.log('PropsMessage.Script');
 export function validateVariant(variant) {
   if (!['success', 'warning', 'error'].includes(variant)) {
     throw new Error(
@@ -52,4 +58,12 @@ export function updateTextValidator(data) {
   }
   return true;
 }
+
+export default {
+  setup() {
+    onMounted(() => {
+      console.log('PropsMessage.Script.Setup.onMounted');
+    });
+  },
+};
 </script>
